@@ -102,35 +102,150 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+1.	Create a New Project:
 
+Open Quartus and create a new project by selecting "File" > "New Project Wizard."
+Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
+2.	Create a New Design File:
 
+Once the project is created, right-click on the project name in the Project Navigator and select "Add New File."
+Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language.
+3.	Write the Combinational Logic Code:
+
+Open the newly created Verilog or VHDL file and write the code for your combinational logic.
+4.	Compile the Project:
+To compile the project, click on "Processing" > "Start Compilation" in the menu.
+Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
+5.	Analyze and Fix Errors:
+
+If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window.
+Review and fix any issues in your code if necessary. View the RTL diagram.
+ 
+
+6.	Verification:
+
+Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF".
+Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
+Give the Input Combinations according to the Truth Table and then simulate the
+Output Waveform.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: PRITHIVIRAJAN V
+RegisterNumber: 23003859
 */
+SR FLPIP FLOP
+~~~
+module srflipflop(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=R|((~S)&(Qbar));
+end
+endmodule
+~~~
 
+D FLIP FLOP
 
+~~~
+module dflipflop(
+input wire clk,
+input wire reset,
+input wire d,
+output reg q
+);
+always @(posedge clk or posedge reset)
+begin 
+if(reset)
+	q<=0;
+else
+	q<=d;
+end
+endmodule
+~~~
 
+JK FLIP FLOP
 
+~~~
+module jkflipflop(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin 
+q=(j&(~q))|((~k)&q);
+qbar=((~j)&(qbar))| k&(~qbar);
+end
+endmodule
+~~~
 
+T FLIP FLOP
+
+~~~
+module T_flipflop(
+	input clk,
+	input t,
+	output reg q,
+	output reg q_bar,
+);
+
+always @(posedge clk) begin
+	if(!t)begin
+		q <= 0;
+		q_bar <= 1;
+	end else begin 
+		q <= ~q;
+		q_bar <= ~q_bar;
+	end
+end
+endmodule
+~~~
 
 ### RTL LOGIC FOR FLIPFLOPS 
 
+SR FLIP FLOP
 
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/8dfe273d-7d73-4eee-ba5a-13d49994ef7b)
 
+D FLIP FLOP
 
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/161594df-9e6e-44ac-adc5-b42bb4c9c9b9)
 
+JK FLIP FLOP
 
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/d3d63fe0-9bc0-4852-bd2a-e005fea97011)
 
+T FLIP FLOP
+
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/ba01bda2-9479-45f7-ab9a-f5a8c59d067c)
 
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
 
+SR FLIP FLOP
 
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/d3fbeebb-e7c9-4d6a-a125-90e7a740f2a9)
+
+D FLIP FLOP
+
+
+
+
+JK FLIP FLOP
+
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/32f609e6-2535-4e36-ab13-32911f00c27b)
+
+T FLIP FLOP
+
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/891e06e3-b1b1-4303-86fc-7f008ee51f40)
 
 
 
