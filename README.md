@@ -236,8 +236,7 @@ SR FLIP FLOP
 
 D FLIP FLOP
 
-
-
+![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/1e554510-b578-409c-9f77-48a28dbe0ad9)
 
 JK FLIP FLOP
 
@@ -247,9 +246,6 @@ T FLIP FLOP
 
 ![image](https://github.com/Prithivirajan2911/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147020085/891e06e3-b1b1-4303-86fc-7f008ee51f40)
 
-
-
-
-
-
 ### RESULTS 
+By this we have verified the truth tables of SR,D,JK,T flip flops using Verilog.
+
